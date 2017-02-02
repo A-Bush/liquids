@@ -1,0 +1,13 @@
+<md-card class="cigarette-item">
+    <md-card-header>
+        <md-card-title>{{cigarette.name}}</md-card-title>
+    </md-card-header>
+    <img md-card-image src="/img/{{cigarette.name}}.jpg" alt="{{cigarette.name}}">
+    <md-card-content class="cigarette-title">
+        <p>{{cigarette.description}}</p>
+    </md-card-content>
+    <md-card-actions>
+        <p>{{cigarette.price}}  грн</p>
+        <button md-button (click)="openDialog()">Купить</button>
+    </md-card-actions>
+</md-card>

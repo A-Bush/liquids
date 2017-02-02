@@ -1,0 +1,22 @@
+md-card-title {
+    color: #a37e2c;
+    font-size: 24px;
+    font-weight: 600;
+}
+md-card-actions, md-card-actions p,  md-card-actions button{
+    margin: 0;
+}
+md-card-actions p {
+    width: 90px;
+    height: 25px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    color: #333;
+    background: #fff3b5;
+    text-align: center;
+    border-radius: 5px;
+}
+ button {
+     background-color: #4bbe3f;
+     color: #fff;
+ }
