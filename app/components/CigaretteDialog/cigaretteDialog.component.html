@@ -37,6 +37,37 @@
             </tr>
         </table>
     </form>
+    <ng-container *ngFor="let order of orders">
+
+        <table class="order">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Сумма</th>
+            </tr>
+            <tr *ngFor="let item of order.items">
+                <td>
+                    <img md-card-image src="/img/{{item.name}}.jpg" alt="{{item.name}}">
+                </td>
+                <td>
+                   {{item.name}}
+                </td>
+                <td>
+                    {{item.price}}
+                </td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td>Всего</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{order.totalPrice}}</td>
+            </tr>
+        </table>
+    </ng-container>
     <button md-dialog-close md-button class="order">Оформить заказ</button>
     <button md-dialog-close md-button class="close">Отменить заказ</button>
 </div>

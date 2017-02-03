@@ -9,23 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var cigarettes_1 = require("../../Model/cigarettes");
+var mainService_component_1 = require("../../Service/mainService.component");
 var CigaretteDialogComponent = (function () {
-    function CigaretteDialogComponent() {
+    function CigaretteDialogComponent(mainService) {
+        this.mainService = mainService;
     }
+    CigaretteDialogComponent.prototype.ngOnInit = function () {
+        this.getOrders();
+    };
+    CigaretteDialogComponent.prototype.getOrders = function () {
+        this.orders = this.mainService.getOrders();
+        return this.orders;
+    };
     return CigaretteDialogComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", cigarettes_1.Cigarette)
-], CigaretteDialogComponent.prototype, "cigarette", void 0);
 CigaretteDialogComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'cigarette-dialog',
         templateUrl: '../CigaretteDialog/cigaretteDialog.component.html',
         styleUrls: ['cigaretteDialog.component.css']
-    })
+    }),
+    __metadata("design:paramtypes", [mainService_component_1.MainServiceComponent])
 ], CigaretteDialogComponent);
 exports.CigaretteDialogComponent = CigaretteDialogComponent;
 //# sourceMappingURL=cigaretteDialog.component.js.map

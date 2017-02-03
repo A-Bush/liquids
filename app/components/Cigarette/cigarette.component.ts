@@ -1,4 +1,4 @@
-import {Component, Input, Output} from "@angular/core";
+import {Component, Input, Output, EventEmitter} from "@angular/core";
 
 import {Cigarette} from "../../Model/cigarettes";
 import {MdDialog} from "@angular/material";
@@ -13,12 +13,29 @@ import {CigaretteDialogComponent} from "../CigaretteDialog/cigaretteDialog.compo
 })
 export class CigaretteComponent {
     @Input() cigarette: Cigarette;
+    @Output() onOrdered = new EventEmitter();
 
-    constructor (public dialog: MdDialog){
+    constructor(public dialog: MdDialog) {
+
     }
 
     openDialog() {
         let dialogRef = this.dialog.open(CigaretteDialogComponent);
+    }
+
+    order() {
+        this.onOrdered.emit(this.cigarette);
+        this.cigarette.onCart = true;
+        let checked = document.getElementsByClassName("md-ripple-active");
+        for (let i = 0; i < checked.length; ++i) {
+            let check = checked[i].parentElement.parentElement;
+            check.setAttribute('disabled', 'true');
+            let goToCart = check.parentElement.getElementsByClassName('go-to-cart');
+            for(let i = 0; i< goToCart.length; ++i) {
+                goToCart[i].style.visibility = 'visible';
+            }
+        }
 
     }
+
 }

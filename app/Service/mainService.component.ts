@@ -3,7 +3,7 @@ import {Injectable, Input} from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 
 import {Cigarette} from "../Model/cigarettes";
-
+import {Order} from "../Model/order";
 
 @Injectable()
 export class MainServiceComponent {
@@ -16,6 +16,8 @@ export class MainServiceComponent {
         return Promise.reject(error.message || error);
     }
 
+    private orders:Array<Order> = [];
+
     constructor (private http: Http) {
     }
 
@@ -25,5 +27,21 @@ export class MainServiceComponent {
             .then(response => response.json().data as Cigarette[])
             .catch(this.handleError);
     }
+
+    addItemToOrder(item:Cigarette) {
+        if (!this.orders.length) {
+            this.addOrder(new Order());
+        }
+        this.orders[0].addItem(item);
+    };
+
+    getOrders():Order[] {
+        return this.orders;
+    };
+
+    addOrder(order:Order) {
+        return this.orders.push(order);
+
+    };
 
 }

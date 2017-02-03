@@ -18,6 +18,9 @@ var CigaretteListComponent = (function () {
         var _this = this;
         this.mainService.getCigarettes().then(function (cigarettes) { return _this.cigarettes = cigarettes; });
     };
+    CigaretteListComponent.prototype.addItemToOrder = function (item) {
+        this.mainService.addItemToOrder(item);
+    };
     return CigaretteListComponent;
 }());
 CigaretteListComponent = __decorate([

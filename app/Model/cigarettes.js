@@ -5,6 +5,7 @@ var Cigarette = (function () {
         this.description = description;
         this.price = price;
         this.amount = amount;
+        this.onCart = false;
     }
     return Cigarette;
 }());

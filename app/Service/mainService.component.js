@@ -12,11 +12,13 @@ var http_1 = require("@angular/http");
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
 var cigarettes_1 = require("../Model/cigarettes");
+var order_1 = require("../Model/order");
 var MainServiceComponent = (function () {
     function MainServiceComponent(http) {
         this.http = http;
         this.cigaretteUrl = 'app/cigarettes';
         this.haeders = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.orders = [];
     }
     MainServiceComponent.prototype.handleError = function (error) {
         console.error("An error occured", error);
@@ -28,6 +30,21 @@ var MainServiceComponent = (function () {
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
+    MainServiceComponent.prototype.addItemToOrder = function (item) {
+        if (!this.orders.length) {
+            this.addOrder(new order_1.Order());
+        }
+        this.orders[0].addItem(item);
+    };
+    ;
+    MainServiceComponent.prototype.getOrders = function () {
+        return this.orders;
+    };
+    ;
+    MainServiceComponent.prototype.addOrder = function (order) {
+        return this.orders.push(order);
+    };
+    ;
     return MainServiceComponent;
 }());
 __decorate([

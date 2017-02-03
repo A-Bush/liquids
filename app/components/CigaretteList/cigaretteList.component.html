@@ -1,7 +1,7 @@
 <section id="allCigarettes">
     <h1>Наша продукция</h1>
-    <div class="cigarettes-list">
-        <cigarette-app *ngFor="let cigarette of cigarettes" [cigarette]="cigarette">
+    <div class="cigarettes-list" *ngFor="let cigarette of cigarettes" >
+        <cigarette-app [cigarette]="cigarette" (onOrdered)="addItemToOrder($event)">
 
         </cigarette-app>
     </div>

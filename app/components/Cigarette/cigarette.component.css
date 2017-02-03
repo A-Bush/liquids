@@ -16,7 +16,13 @@ md-card-actions p {
     text-align: center;
     border-radius: 5px;
 }
- button {
+ button.go-to-cart {
      background-color: #4bbe3f;
      color: #fff;
  }
+button.go-to-cart {
+    visibility: hidden;
+}
+button[disabled]{
+    background: transparent;
+}

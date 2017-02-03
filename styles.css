@@ -10,4 +10,7 @@ body {
     color: #757575;
     background-color: #fafafa;
 }
+md-button-toggle label div.md-button-toggle-label-content {
+    padding: 0;
+}
 

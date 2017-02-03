@@ -11,6 +11,7 @@ import {CigaretteListComponent} from "./components/CigaretteList/cigaretteList.c
 import {CigaretteComponent} from "./components/Cigarette/cigarette.component";
 import {MaterialModule} from "@angular/material";
 import {CigaretteDialogComponent} from "./components/CigaretteDialog/cigaretteDialog.component";
+import {OrderServiceComponent} from "./Service/orderService.component";
 
 
 @NgModule({
