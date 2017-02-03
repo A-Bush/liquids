@@ -11,12 +11,13 @@ var Order = (function () {
     }
     Order.prototype.addItem = function (item) {
         this.items.push(item);
-        this.setTotalPrice(item.price);
+        this.setTotalPrice(item.price, item.quantity);
     };
     ;
-    Order.prototype.setTotalPrice = function (price) {
+    Order.prototype.setTotalPrice = function (price, quantity) {
         if (price === void 0) { price = 0; }
-        this.totalPrice += price;
+        if (quantity === void 0) { quantity = 1; }
+        this.totalPrice += (price * quantity);
     };
     ;
     return Order;

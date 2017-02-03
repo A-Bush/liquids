@@ -22,7 +22,8 @@ var CigaretteComponent = (function () {
     };
     CigaretteComponent.prototype.order = function () {
         this.onOrdered.emit(this.cigarette);
-        this.cigarette.onCart = true;
+        this.cigarette.quantity = 1;
+        this.cigarette.amount = this.cigarette.price;
         var checked = document.getElementsByClassName("md-ripple-active");
         for (var i = 0; i < checked.length; ++i) {
             var check = checked[i].parentElement.parentElement;

@@ -12,10 +12,10 @@ export class Order {
     }
     addItem(item:Cigarette) {
         this.items.push(item);
-        this.setTotalPrice(item.price);
+        this.setTotalPrice(item.price, item.quantity);
     };
-    setTotalPrice(price:number = 0) {
-        this.totalPrice += price;
+    setTotalPrice(price:number = 0, quantity:number = 1) {
+        this.totalPrice += (price * quantity);
     };
 
 }

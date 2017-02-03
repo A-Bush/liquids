@@ -22,6 +22,9 @@ table.order tr td {
 table.order img{
     width: 50px;
 }
+table.order span.quantity {
+    vertical-align: super;
+}
 table.order tr.total td{
     font-weight: 600;
 }

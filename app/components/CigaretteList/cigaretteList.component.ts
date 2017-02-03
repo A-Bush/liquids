@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {MainServiceComponent} from "../../Service/mainService.component";
 import {Cigarette} from "../../Model/cigarettes";
-import {OrderServiceComponent} from "../../Service/orderService.component";
 
 @Component({
     moduleId: module.id,
@@ -18,6 +17,8 @@ export class CigaretteListComponent implements OnInit {
     ngOnInit():void {
     this.mainService.getCigarettes().then(cigarettes => this.cigarettes = cigarettes);
     }
+
+
     addItemToOrder(item:Cigarette){
         this.mainService.addItemToOrder(item);
     }

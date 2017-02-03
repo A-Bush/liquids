@@ -3,14 +3,13 @@ export class Cigarette {
     name: string;
     description: string;
     price: number;
+    quantity: number;
     amount: number;
-    onCart: boolean;
 
-    constructor (name, description, price, amount){
+    constructor (name, description, price){
         this.name = name;
         this.description = description;
+        this.quantity = 0;
         this.price = price;
-        this.amount = amount;
-        this.onCart = false;
     }
 }

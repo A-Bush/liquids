@@ -39,10 +39,11 @@
     </form>
     <ng-container *ngFor="let order of orders">
 
-        <table class="order">
+        <table class="order" >
             <tr>
                 <th></th>
-                <th></th>
+                <th>Цена за единицу товара</th>
+                <th> Общее количество товара</th>
                 <th>Сумма</th>
             </tr>
             <tr *ngFor="let item of order.items">
@@ -50,18 +51,23 @@
                     <img md-card-image src="/img/{{item.name}}.jpg" alt="{{item.name}}">
                 </td>
                 <td>
-                   {{item.name}}
+                   {{item.price}}
                 </td>
                 <td>
-                    {{item.price}}
+                    <md-icon class="md-24" (click)="minusQuantity(item, order)">remove</md-icon> <span class="quantity">{{item.quantity}}</span> <md-icon class="md-24" (click)="plusQuantity(item, order)">add</md-icon>
+                </td>
+                <td>
+                    {{item.amount}}
                 </td>
             </tr>
             <tr class="total">
                 <td></td>
                 <td></td>
+                <td></td>
                 <td>Всего</td>
             </tr>
             <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>{{order.totalPrice}}</td>

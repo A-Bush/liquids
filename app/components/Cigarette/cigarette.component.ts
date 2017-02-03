@@ -15,6 +15,7 @@ export class CigaretteComponent {
     @Input() cigarette: Cigarette;
     @Output() onOrdered = new EventEmitter();
 
+
     constructor(public dialog: MdDialog) {
 
     }
@@ -25,8 +26,9 @@ export class CigaretteComponent {
 
     order() {
         this.onOrdered.emit(this.cigarette);
-        this.cigarette.onCart = true;
-        let checked = document.getElementsByClassName("md-ripple-active");
+        this.cigarette.quantity = 1;
+        this.cigarette.amount = this.cigarette.price;
+        let checked:any = document.getElementsByClassName("md-ripple-active");
         for (let i = 0; i < checked.length; ++i) {
             let check = checked[i].parentElement.parentElement;
             check.setAttribute('disabled', 'true');

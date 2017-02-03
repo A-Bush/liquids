@@ -1,11 +1,10 @@
 "use strict";
 var Cigarette = (function () {
-    function Cigarette(name, description, price, amount) {
+    function Cigarette(name, description, price) {
         this.name = name;
         this.description = description;
+        this.quantity = 0;
         this.price = price;
-        this.amount = amount;
-        this.onCart = false;
     }
     return Cigarette;
 }());

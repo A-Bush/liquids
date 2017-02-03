@@ -13,6 +13,8 @@ var mainService_component_1 = require("../../Service/mainService.component");
 var CigaretteDialogComponent = (function () {
     function CigaretteDialogComponent(mainService) {
         this.mainService = mainService;
+        this.onMinusQuantity = new core_1.EventEmitter();
+        this.onPlusQuantity = new core_1.EventEmitter();
     }
     CigaretteDialogComponent.prototype.ngOnInit = function () {
         this.getOrders();
@@ -21,8 +23,38 @@ var CigaretteDialogComponent = (function () {
         this.orders = this.mainService.getOrders();
         return this.orders;
     };
+    CigaretteDialogComponent.prototype.minusQuantity = function (item, order) {
+        this.onMinusQuantity.emit(item);
+        item.quantity -= 1;
+        item.amount = item.quantity * item.price;
+        this.setTotalPrice(order);
+    };
+    CigaretteDialogComponent.prototype.plusQuantity = function (item, order) {
+        this.onPlusQuantity.emit(item);
+        item.quantity += 1;
+        item.amount = item.quantity * item.price;
+        this.setTotalPrice(order);
+    };
+    CigaretteDialogComponent.prototype.setTotalPrice = function (order) {
+        var items = order.items;
+        var totalPrice = 0;
+        for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
+            var item = items_1[_i];
+            totalPrice += item.amount;
+        }
+        return order.totalPrice = totalPrice;
+    };
+    ;
     return CigaretteDialogComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], CigaretteDialogComponent.prototype, "onMinusQuantity", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], CigaretteDialogComponent.prototype, "onPlusQuantity", void 0);
 CigaretteDialogComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
