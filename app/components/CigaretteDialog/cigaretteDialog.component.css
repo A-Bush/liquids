@@ -25,6 +25,9 @@ table.order img{
 table.order span.quantity {
     vertical-align: super;
 }
+table.order md-icon {
+    cursor: pointer;
+}
 table.order tr.total td{
     font-weight: 600;
 }

@@ -29,7 +29,9 @@ export class CigaretteDialogComponent implements OnInit {
 
     minusQuantity(item: Cigarette, order: Order) {
         this.onMinusQuantity.emit(item);
-        item.quantity -= 1;
+        if(item.quantity > 0) {
+            item.quantity -= 1;
+        }
         item.amount = item.quantity * item.price;
         this.setTotalPrice(order);
     }

@@ -25,7 +25,9 @@ var CigaretteDialogComponent = (function () {
     };
     CigaretteDialogComponent.prototype.minusQuantity = function (item, order) {
         this.onMinusQuantity.emit(item);
-        item.quantity -= 1;
+        if (item.quantity > 0) {
+            item.quantity -= 1;
+        }
         item.amount = item.quantity * item.price;
         this.setTotalPrice(order);
     };
