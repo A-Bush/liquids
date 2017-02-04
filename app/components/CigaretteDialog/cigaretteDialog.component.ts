@@ -27,9 +27,38 @@ export class CigaretteDialogComponent implements OnInit {
         return this.orders;
     }
 
+    deleteOrderItem(item: Cigarette, order: Order) {
+        let index: number = item.id;
+        for (let currentItem of order.items) {
+            let orderItems: Cigarette[] = order.items;
+            let orderName = item.name;
+            let orderDel = currentItem.id;
+            if (index == orderDel) {
+                let ind: number = orderItems.indexOf(currentItem);
+                currentItem.quantity = 1;
+                orderItems.splice(ind, 1);
+                item.onCart = false;
+                let checked: any = document.getElementsByClassName("onCart" + orderName);
+
+                for (let i = 0; i < checked.length; ++i) {
+                    checked[i].removeAttribute('disabled');
+                    let goToCart = checked[i].parentElement.getElementsByClassName('go-to-cart');
+                    for (let i = 0; i < goToCart.length; ++i) {
+                        goToCart[i].style.visibility = 'hidden';
+                    }
+                    checked[i].classList.remove('onCart' + orderName);
+
+                }
+                this.setTotalPrice(order);
+
+            }
+
+        }
+    }
+
     minusQuantity(item: Cigarette, order: Order) {
         this.onMinusQuantity.emit(item);
-        if(item.quantity > 0) {
+        if (item.quantity > 0) {
             item.quantity -= 1;
         }
         item.amount = item.quantity * item.price;
@@ -43,7 +72,7 @@ export class CigaretteDialogComponent implements OnInit {
         this.setTotalPrice(order);
     }
 
-    setTotalPrice(order:Order) {
+    setTotalPrice(order: Order) {
         let items = order.items;
         let totalPrice = 0;
         for (let item of items) {

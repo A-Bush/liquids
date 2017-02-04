@@ -5,11 +5,13 @@ export class Cigarette {
     price: number;
     quantity: number;
     amount: number;
+    onCart: boolean;
 
     constructor (name, description, price){
         this.name = name;
         this.description = description;
         this.quantity = 0;
         this.price = price;
+        this.onCart = false;
     }
 }

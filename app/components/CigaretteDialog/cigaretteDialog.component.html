@@ -42,11 +42,13 @@
         <table class="order" >
             <tr>
                 <th></th>
+                <th></th>
                 <th>Цена за единицу товара</th>
                 <th> Общее количество товара</th>
                 <th>Сумма</th>
             </tr>
             <tr *ngFor="let item of order.items">
+                <td><md-icon class="md-24" (click)="deleteOrderItem(item, order)">clear</md-icon></td>
                 <td>
                     <img md-card-image src="/img/{{item.name}}.jpg" alt="{{item.name}}">
                 </td>
@@ -64,9 +66,11 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <td>Всего</td>
             </tr>
             <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

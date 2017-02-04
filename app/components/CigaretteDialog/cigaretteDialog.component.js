@@ -23,6 +23,31 @@ var CigaretteDialogComponent = (function () {
         this.orders = this.mainService.getOrders();
         return this.orders;
     };
+    CigaretteDialogComponent.prototype.deleteOrderItem = function (item, order) {
+        var index = item.id;
+        for (var _i = 0, _a = order.items; _i < _a.length; _i++) {
+            var currentItem = _a[_i];
+            var orderItems = order.items;
+            var orderName = item.name;
+            var orderDel = currentItem.id;
+            if (index == orderDel) {
+                var ind = orderItems.indexOf(currentItem);
+                currentItem.quantity = 1;
+                orderItems.splice(ind, 1);
+                item.onCart = false;
+                var checked = document.getElementsByClassName("onCart" + orderName);
+                for (var i = 0; i < checked.length; ++i) {
+                    checked[i].removeAttribute('disabled');
+                    var goToCart = checked[i].parentElement.getElementsByClassName('go-to-cart');
+                    for (var i_1 = 0; i_1 < goToCart.length; ++i_1) {
+                        goToCart[i_1].style.visibility = 'hidden';
+                    }
+                    checked[i].classList.remove('onCart' + orderName);
+                }
+                this.setTotalPrice(order);
+            }
+        }
+    };
     CigaretteDialogComponent.prototype.minusQuantity = function (item, order) {
         this.onMinusQuantity.emit(item);
         if (item.quantity > 0) {

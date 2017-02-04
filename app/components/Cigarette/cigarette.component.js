@@ -24,10 +24,12 @@ var CigaretteComponent = (function () {
         this.onOrdered.emit(this.cigarette);
         this.cigarette.quantity = 1;
         this.cigarette.amount = this.cigarette.price;
+        this.cigarette.onCart = true;
         var checked = document.getElementsByClassName("md-ripple-active");
         for (var i = 0; i < checked.length; ++i) {
             var check = checked[i].parentElement.parentElement;
             check.setAttribute('disabled', 'true');
+            check.classList.add('onCart' + this.cigarette.name);
             var goToCart = check.parentElement.getElementsByClassName('go-to-cart');
             for (var i_1 = 0; i_1 < goToCart.length; ++i_1) {
                 goToCart[i_1].style.visibility = 'visible';

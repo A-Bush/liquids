@@ -2,7 +2,7 @@ div.dialog-content {
     position: relative;
     width: 600px;
     height: 700px;
-    max-height: 80vh;
+    max-height: 90vh;
 }
 button.close, button.order {
     position: absolute;
@@ -16,8 +16,11 @@ table.order {
     margin-top: 20px;
 }
 table.order tr td {
-    width: 30%;
+    width: 22%;
     text-align: center;
+}
+table.order tr td:first-of-type{
+    width: 10%;
 }
 table.order img{
     width: 50px;
